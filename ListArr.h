@@ -6,7 +6,8 @@ class ListArr
 private:
 	int size;//para saber cuantos arrays hay y así saber cuantos nodos resumen se deben tener
 	int tamaño;//el tamaño que tendrán los arrays, todos tendrán el mismo tamaño al definirse al inicio.
-	
+	ArrayListArr* first;//Apuntará al último ArrayListArr
+	ArrayListArr* end;//apuntará al primer ArrayListArr
 
 
 public:
@@ -25,7 +26,7 @@ public:
 	virtual bool find(int v) = 0;//busca el valor v en todo el ListArr
 	virtual int delete_left() = 0;//eliminar y retornar elemento de la izquierda
 	virtual int delete_right() = 0;//eliminar y retornar elemento de la derecha
-	
+
 	/*Las funciones delete podrían hacerse mediante los punteros de inicio y final que hay en ArrayListArr, aunque luego de eliminar un elemento se deberá cambiar los valores de los nodos resumenes, para lo 
 	cual recomiendo llamar a reHacerNodos() a menos que se les ocurra algo mejor*/
 

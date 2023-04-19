@@ -11,8 +11,6 @@ private:
 			this.next = next;
 		}
 	};
-	ArrayListArr* first;//Apuntará al último ArrayListArr
-	ArrayListArr* end;//apuntará al primer ArrayListArr
 
 public:
 	ArrayListArr();
