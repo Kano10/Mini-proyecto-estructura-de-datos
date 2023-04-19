@@ -4,7 +4,6 @@ class ArrayListArr
 {
 private:
 	struct ArrayListArr{
-		int tamaño;
 		int enUso;
 		int array[tamaño];
 		ArrayListArr* next;
