@@ -8,7 +8,9 @@ NodoListArr::NodoListArr(){
 }
 
 //Destructor
-NodoListArr::~NodoListArr() {}
+NodoListArr::~NodoListArr(){
+	
+}
 
 
 //El enUso de cada nodo es la suma del enUso de sus dos hijos

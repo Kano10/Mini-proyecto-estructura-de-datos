@@ -10,13 +10,13 @@ class ListArr
 private:
 	int size;//para saber cuantos arrays hay y así saber cuantos nodos resumen se deben tener
 	int tamaño;//el tamaño que tendrán los arrays, todos tendrán el mismo tamaño al definirse al inicio.
-	ArrayListArr* first;//Apuntará al último ArrayListArr
-	ArrayListArr* end;//apuntará al primer ArrayListArr
-
+	NodoListArr* root;
 
 public:
+	ArrayListArr* first;//Apuntará al último ArrayListArr
+	ArrayListArr* end;//apuntará al primer ArrayListArr
 	//METODOS QUE NOS PIDEN IMPLEMENTAR
-	ListArr();
+	ListArr(int size, int tamaño);
 	~ListArr();
 	virtual int size() = 0;//Cantidad de elementos en el ListArr
 	virtual void insert_left(int v) = 0;//insertar un valor a la izquierda
@@ -36,11 +36,11 @@ public:
 
 
 	//METODOS QUE NECESITAMOS PARA PODER IMPLEMENTAR LOS ANTERIORES
-	virtual void setTamano() = 0;//Para defini el tamaño que será igual para todos los arrays.
+	virtual void setTamano(int n) = 0;//Para defini el tamaño que será igual para todos los arrays.
 	virtual void newArray() = 0;//Para crear un nuevo array, usar variable tamaño para crear el array y agregar que size sume 1 cada vez que se llama la funcion.
 	//además, si se inserta una cantidad de elementos que no cabe en los arrays que tenemos se deben crear más para poder almacenar los valores, este método se deberá usar en esos casos.
 	virtual void reHacerNodos() = 0;//Cuando se hagan nuevos arrays, es más fácil (o al menos por lo que pienso yo) re hacer todos los nodos resumenes luego de terminar de crear los nuevos arrays y eliminar los nodos resumenes viejos.
 	//dentro de está misma función se podría agregar la eliminación de nodos resumenes, no es necesario crear otro método de eliminación de nodos.
-
+	virtual NodoListArr* getRoot() = 0;
 };
 #endif
