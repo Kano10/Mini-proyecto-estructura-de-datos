@@ -33,4 +33,3 @@ int NodoListArr::getCapacidad(){
 
 void NodoListArr::punterosArray() {}
 
-void NodoListArr::punterosNodos() {}

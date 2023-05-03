@@ -1,3 +1,7 @@
+#ifndef LISTARR_H
+#define LISTARR_H
+
+
 #include "ArrayListArr.h"
 #include "NodoListArr.h"
 
@@ -39,3 +43,4 @@ public:
 	//dentro de está misma función se podría agregar la eliminación de nodos resumenes, no es necesario crear otro método de eliminación de nodos.
 
 };
+#endif

@@ -1,27 +1,3 @@
-
-
-class ArrayListArr
-{
-private:
-	struct ArrayListArr{
-		int enUso;
-		int array[tamaño];
-		ArrayListArr* next;
-		ArrayListArr(ArrayListArr* next = nullptr){
-			this.next = next;
-		}
-	};
-
-public:
-	ArrayListArr();
-	~ArrayListArr();
-	
-};
-
-
-
-// Mi propuesta de cambio
-/*
 #ifndef ARRAYLISTARR_H
 #define ARRAYLISTARR_H
 
@@ -41,4 +17,6 @@ public:
 	void insertAt(int data, int i);	//insertar en posicion i, para clase nodo solo se llama a esta
 };
 #endif
-*/
+
+
+
