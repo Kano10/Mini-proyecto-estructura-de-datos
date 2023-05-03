@@ -31,6 +31,14 @@ ArrayListArr* ArrayListArr::getNext(){
 	return next;
 }
 
+void ArrayListArr::setNext(ArrayListArr* nuevo, ArrayListArr* end){
+		end->next = nuevo;
+		end = nuevo;
+}
+
+int ArrayListArr::arrayPosicion(int p){
+	return array[p];
+}
 //Solo insertar cuando i tiene valor entre 0 y el tam para no acceder a algo que no existe
 void ArrayListArr::insertAt(int data, int i){
 	if(0 <= i && i < tam){

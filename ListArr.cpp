@@ -1,54 +1,58 @@
 #include "ListArr.h"
+#include "ArrayListArr.h"
+#include "NodoListArr.h"
+#include <iostream>
+
+using namespace std;
 
 ListArr::ListArr(int size, int tamaño){
     this->size = size;
     this->tamaño = tamaño;
     for (int i = 0; i < size; i++)
     {
-        ArrayListArr* nuevoArray = ArrayListArr(tamaño);
-        nuevoArray->next = nullptr;
+        ArrayListArr* nuevoArray = new ArrayListArr(tamaño);
         if(first == nullptr){
             first = nuevoArray;
             end = nuevoArray;
         }else{
-            end->next = nuevoArray;
-            end = nuevoArray;
+            nuevoArray->setNext(nuevoArray,end);
         }
     }
-    ListArr.~NodoListArr();
-    ListArr.reHacerNodos(); 
+    //~NodoListArr();
+    reHacerNodos(); 
 }
 
 ListArr::~ListArr(){
 
 }
 
-int ListArr::size(){
+int ListArr::getSize(){
     return size;
 }
 
-void ListArr::insert_left(){
+void ListArr::insert_left(int v){
 
 }
 
-void ListArr::insert_right(){
+void ListArr::insert_right(int v){
     
 }
 
-void ListArr::insert(){
+void ListArr::insert(int v, int i){
 
 }
 
 void ListArr::print(){
-    ArrayListArr* aux==first;//Se parte desde el primero
+    ArrayListArr* aux;//Se parte desde el primero
+    aux==first;
     int contAux=0;
-    while (contAux<=ListArr.size())//Pasará por todos los arrays, hasta que ya no se cumpla esta condición
+    while (contAux<=getSize())//Pasará por todos los arrays, hasta que ya no se cumpla esta condición
     {
-        for (int i = 0; i < aux->enUso; i++)
+        for (int i = 0; i < aux->getUsado(); i++)
         {
-            cout<<aux->array[i]<<endl;
+            cout<<aux->arrayPosicion(i)<<endl;
         }
-        aux==aux->next;
+        aux==aux->getNext();
     } 
 }
 
@@ -56,17 +60,17 @@ bool ListArr::find(int v){
     if(first==nullptr){//Si no hay arrays, no existe el valor
         return false;
     }
-    ArrayListArr* aux==first;//Se parte desde el primero
+    ArrayListArr* aux=first;//Se parte desde el primero
     int contAux=0;
-    while (contAux<=ListArr.size())//Pasará por todos los arrays, hasta que ya no se cumpla esta condición
+    while (contAux<=getSize())//Pasará por todos los arrays, hasta que ya no se cumpla esta condición
     {
-        for (int i = 0; i < aux->enUso; i++)
+        for (int i = 0; i < aux->getUsado(); i++)
         {
-            if(aux->array[i]==v){//Chequea las posiciones
+            if(aux->arrayPosicion(i)==v){//Chequea las posiciones
                 return true;
             }
         }
-        aux==aux->next;//Si no se encontró en el primer array, aux pasa a ser el siguiente array
+        aux = aux->getNext();//Si no se encontró en el primer array, aux pasa a ser el siguiente array
     }
     return false;//si llega a salir del while es porque no está el valor
 }

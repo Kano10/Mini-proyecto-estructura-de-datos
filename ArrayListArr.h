@@ -14,6 +14,8 @@ public:
 	int getUsado(); //Se usara para acceder a enUso dentro de otras clases
 	int getTam();	//Se usara para acceder a tam dentro de otras clases
 	ArrayListArr* getNext();	//Tener disponible el next en otras clases
+	void setNext(ArrayListArr* nuevo, ArrayListArr* end);
+	int arrayPosicion(int p);//retorna la posicion p del array
 	void insertAt(int data, int i);	//insertar en posicion i, para clase nodo solo se llama a esta
 };
 #endif
