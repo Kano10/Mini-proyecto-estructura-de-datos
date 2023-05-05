@@ -4,6 +4,7 @@
 
 #include "ArrayListArr.h"
 #include "NodoListArr.h"
+#include <vector>
 
 class ListArr
 {
@@ -11,6 +12,8 @@ private:
 	int size;//para saber cuantos arrays hay y así saber cuantos nodos resumen se deben tener
 	int tamaño;//el tamaño que tendrán los arrays, todos tendrán el mismo tamaño al definirse al inicio.
 	NodoListArr* root;
+	vector<NodoListArr*> hojas;
+
 
 public:
 	ArrayListArr* first;//Apuntará al último ArrayListArr
@@ -39,8 +42,11 @@ public:
 	void setTamano(int n) ;//Para defini el tamaño que será igual para todos los arrays.
 	void newArray() ;//Para crear un nuevo array, usar variable tamaño para crear el array y agregar que size sume 1 cada vez que se llama la funcion.
 	//además, si se inserta una cantidad de elementos que no cabe en los arrays que tenemos se deben crear más para poder almacenar los valores, este método se deberá usar en esos casos.
-	void reHacerNodos() ;//Cuando se hagan nuevos arrays, es más fácil (o al menos por lo que pienso yo) re hacer todos los nodos resumenes luego de terminar de crear los nuevos arrays y eliminar los nodos resumenes viejos.
+	NodoListArr* reHacerNodos(int n) ;//Cuando se hagan nuevos arrays, es más fácil (o al menos por lo que pienso yo) re hacer todos los nodos resumenes luego de terminar de crear los nuevos arrays y eliminar los nodos resumenes viejos.
 	//dentro de está misma función se podría agregar la eliminación de nodos resumenes, no es necesario crear otro método de eliminación de nodos.
-	NodoListArr* getRoot() ;
+	void getRoot(NodoListArr* nodo);
+	void setRoot();
+	void vaciarHojas();
+	void rellenarVector();
 };
 #endif

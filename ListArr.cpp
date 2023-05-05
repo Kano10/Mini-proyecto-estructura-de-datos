@@ -2,6 +2,8 @@
 #include "ArrayListArr.h"
 #include "NodoListArr.h"
 #include <iostream>
+#include <queue>
+#include <cmath>
 
 using namespace std;
 
@@ -19,7 +21,7 @@ ListArr::ListArr(int size, int tamaño){
         }
     }
     //~NodoListArr();
-    reHacerNodos(); 
+    setRoot(); 
 }
 
 ListArr::~ListArr(){
@@ -88,13 +90,56 @@ void ListArr::setTamano(int n){//Creo que este se podría quitar, basta con fija
 }
 
 void ListArr::newArray(){//Se tiene que usar para los metodos insert
-
-}
-
-void ListArr::reHacerNodos(){//Se tiene que utilizar para los metodos insert, delete y constructor
     
 }
 
-NodoListArr* ListArr::getRoot(){
+NodoListArr* ListArr::reHacerNodos(int n){//Se tiene que utilizar para los metodos insert, delete y constructor
+    //OJO AQUI. cuando se quiera usar este metodo con el getSize(), se debe usar ceil(getSize()) para que redondee al proximo entero, esto es para casos como por ejemplo el 5,
+    //si se tienen arrays, se puede saber que se necesitan 3 nodos, pero n/2 da 2.5, entonces al usar ceil da 3 y no 2.5 
+    if (n == 0) return NULL;
+    int altura = ceil(log2(n + 1));
+    int nodos = pow(2, altura) - 1;
+    NodoListArr* root = new NodoListArr();
+    queue<NodoListArr*> q;
+    q.push(root);
+    nodos--;
+    while (nodos > 0) {
+        NodoListArr* nodo = q.front();
+        q.pop();
+        nodos--;
+        nodo->setNodoIzquierdo(nodo);
+        q.push(nodo->getNodoIzquierdo(nodo));
+        if (nodos == 0) break;
+        nodo->setNodoDerecho(nodo);
+        q.push(nodo->getNodoDerecho(nodo));
+        nodos--;
+    }
+    vaciarHojas();
+
     return root;
+}
+
+
+void ListArr::getRoot(NodoListArr* nodo){
+    nodo = root;
+}
+
+void ListArr::setRoot(){
+    root = reHacerNodos(ceil(getSize()));
+}
+
+void ListArr::vaciarHojas(){
+    hojas.clear();
+}
+
+void rellenarVector(){
+    NodoListArr* aux;
+    getRoot(aux);
+    if (!nodo) return;
+    if (!nodo->hijoIzq && !nodo->hijoDer) {
+        hojas.push_back(nodo);
+        return;
+    }
+    getHojas(nodo->hijoIzq, hojas);
+    getHojas(nodo->hijoDer, hojas);
 }

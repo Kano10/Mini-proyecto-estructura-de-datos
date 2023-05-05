@@ -35,3 +35,15 @@ int NodoListArr::getCapacidad(){
 
 void NodoListArr::punterosArray() {}
 
+NodoListArr* NodoListArr::getNodoIzquierdo(NodoListArr* nodo){
+	return nodo->nodo->nodoIzq;
+}
+NodoListArr* NodoListArr::getNodoDerecho(NodoListArr* nodo){
+	return nodo->nodo->nodoDer;
+}
+void NodoListArr::setNodoIzquierdo(NodoListArr* nodo){
+	nodo->nodo->nodoIzq=new NodoListArr();
+}
+void NodoListArr::setNodoDerecho(NodoListArr* nodo){
+	nodo->nodo->nodoDer=new NodoListArr();
+}
