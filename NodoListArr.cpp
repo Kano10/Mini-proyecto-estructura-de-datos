@@ -14,7 +14,10 @@ NodoListArr::~NodoListArr(){
 
 
 //El enUso de cada nodo es la suma del enUso de sus dos hijos
-void NodoListArr::setEnUso(){
+void NodoListArr::setEnUso(int n, NodoListArr* node){
+	if(getNodoDerecho(node) && getNodoIzquierdo(node) ==nullptr){
+		this->usado = n;
+	}
 	this->usado = nodo->listArrIzq->getUsado() + nodo->listArrDer->getUsado();
 }
 

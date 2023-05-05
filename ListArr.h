@@ -12,7 +12,8 @@ private:
 	int size;//para saber cuantos arrays hay y así saber cuantos nodos resumen se deben tener
 	int tamaño;//el tamaño que tendrán los arrays, todos tendrán el mismo tamaño al definirse al inicio.
 	NodoListArr* root;
-	vector<NodoListArr*> hojas;
+	vector<NodoListArr*> hojas;//esto se usa para poder saber cuales son las hojas del arbol y así poder asociar
+	//los arrays rápidamente.
 
 
 public:
@@ -47,6 +48,7 @@ public:
 	void getRoot(NodoListArr* nodo);
 	void setRoot();
 	void vaciarHojas();
-	void rellenarVector();
+	void rellenarVector(NodoListArr* nodo);
+	void rellenarNodos();//Para darle los valores a los nodos resumenes.
 };
 #endif

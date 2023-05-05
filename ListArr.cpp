@@ -115,7 +115,7 @@ NodoListArr* ListArr::reHacerNodos(int n){//Se tiene que utilizar para los metod
         nodos--;
     }
     vaciarHojas();
-
+    rellenarVector(root);
     return root;
 }
 
@@ -132,14 +132,31 @@ void ListArr::vaciarHojas(){
     hojas.clear();
 }
 
-void rellenarVector(){
-    NodoListArr* aux;
-    getRoot(aux);
+void ListArr::rellenarVector(NodoListArr* nodo){
+//cuando se llame a esta función, su primer llamado debe ser usando el root.
     if (!nodo) return;
-    if (!nodo->hijoIzq && !nodo->hijoDer) {
+    if (!nodo->getNodoIzquierdo(nodo) && !nodo->getNodoDerecho(nodo)) {
         hojas.push_back(nodo);
         return;
     }
-    getHojas(nodo->hijoIzq, hojas);
-    getHojas(nodo->hijoDer, hojas);
+    rellenarVector(nodo->getNodoIzquierdo(nodo));
+    rellenarVector(nodo->getNodoDerecho(nodo));
+}
+
+void ListArr::rellenarNodos(){
+    ArrayListArr* aux = first;
+    for (int i = 0; i < hojas.size(); i++)
+    {
+        int suma=0;
+        suma += aux->getUsado();
+        if(aux->getNext()!=nullptr){
+            aux = aux->getNext();
+            suma += aux->getUsado();
+            hojas[i]->setEnUso(suma,hojas[i]);
+        }else{
+            hojas[i]->setEnUso(suma, hojas[i]);
+        }
+    }
+    
+
 }

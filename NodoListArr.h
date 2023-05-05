@@ -6,7 +6,6 @@
 class NodoListArr{
 private:
 	struct Nodo{
-		
 		NodoListArr* nodoIzq;//puntero al nodo de abajo a la izquierda
 		NodoListArr* nodoDer;//puntero al nodo de abajo a la derecha
 		ArrayListArr* listArrIzq;//Puntero al array de abajo a la izquierda
@@ -25,7 +24,7 @@ private:
 public:
 	NodoListArr();
 	~NodoListArr();
-	void setEnUso();//Para definir cuantos espacios se están usando
+	void setEnUso(int n, NodoListArr* nodo);//Para definir cuantos espacios se están usando
 	int getEnUso();//Para saber cuantos están en uso
 	void setCapacidad();//Para definir la capacidad total
 	int getCapacidad();//Para saber la capacidad
