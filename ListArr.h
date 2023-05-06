@@ -19,6 +19,8 @@ private:
 public:
 	ArrayListArr* first;//Apuntará al último ArrayListArr
 	ArrayListArr* end;//apuntará al primer ArrayListArr
+	// Esos debieran ser privados ya que no son metodos.
+	
 	//METODOS QUE NOS PIDEN IMPLEMENTAR
 	ListArr(int size, int tamaño);
 	~ListArr();
