@@ -57,9 +57,44 @@ void ListArr::insert_left(int v){
     arr[0] = v;
     count++;
 }
+
+/*
+void ListArr::insert_left(int v){
+    if(!first.ocupado(0)) first.insertAt(v, 0);
+    else{
+        if(first.getUsado() != first.getTam()){
+            for(int j = first.getTam() - 1; j > 0; --j) first[j] = first[j - 1];
+            first.insertAt(v, 0);
+        }
+        else{
+            int ultimo = first.arrayPosicion(first.getTam() - 1);
+            for(int j = first.getTam() - 1; j > 0; --j) first[j] = first[j - 1];
+            first.insertAt(v, 0);
+
+            //crear nuevo nodo de array e insertar ultimo
+            ArrayListArr *nuevo = new ArrayListArr();
+            nuevo.insertAt(ultimo, 0);
+            nuevo.setNext(first.getNext());
+            first.setNext(nuevo);
+        }
+    }
+}
+*/
+
 void ListArr::insert_right(int v){
     
 }
+
+/*
+void ListArr::insert_right(int v){
+    if(end.getUsado() < end.getTam()) end.insertAt(v, end.getUsado());
+    else{
+        ArrayListArr *nuevo = new ArrayListArr();
+        end.setNext(nuevo);
+        end = *nuevo;
+    }
+}
+*/
 
 void ListArr::insert(int v, int i){
 
@@ -86,6 +121,48 @@ void ListArr::insert(int v, int i){
     getNodo(pos, auxn, cont);
     reHacerNodos(size);
 }
+
+/*
+void ListArr::insert(int v, int i){
+    NodoListArr *aux = root;
+    //Ir pasando de nodo en nodo hasta llegar al del array correspondiente;
+    while(aux->getNodoIzquierdo() != nullptr || aux->getNodoDerecho() != nullptr){
+        if (aux->getNodoIzquierdo() != nullptr && aux->getNodoIzquierdo()->getUsado() > i) {
+            aux = aux->getNodoIzquierdo();
+        }
+        else {
+            if (aux->getNodoIzquierdo() != nullptr) {
+                i -= aux->getNodoIzquierdo()->getUsado();
+            }
+            aux = aux->getNodoDerecho();
+        }
+    }
+    //Trabajar en el nodo con el array ya encontrado;
+
+    ArrayListArr array = aux.getArray();
+    //si la posicion esta disponible insertar
+    if(!array.ocupado(i)) array.insertAt(v, i);
+    //mover elementos para insertar
+    else{
+        //insertar sin necesidad de crear otro nodo
+        if(array.getUsado() != array.getTam()){
+            for(int j = array.getTam() - 1; j > i; --j) array[j] = array[j - 1];
+        }
+        //insertar craendo nuevo nodo por el array lleno
+        else{
+            int ultimo = array.arrayPosicion(array.getTam() - 1);
+            for(int j = array.getTam() - 1; j > i; --j) array[j] = array[j - 1];
+
+            //crear nuevo nodo de array e insertar ultimo
+            ArrayListArr *nuevo = new ArrayListArr();
+            nuevo.insertAt(ultimo, 0);
+            nuevo.setNext(first.getNext());
+            first.setNext(nuevo);
+        }
+    }
+}
+*/
+
 void ListArr::print(){
     ArrayListArr* aux;//Se parte desde el primero
     aux==first;
