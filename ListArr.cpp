@@ -1,6 +1,7 @@
 #include "ListArr.h"
 #include "ArrayListArr.h"
 #include "NodoListArr.h"
+
 #include <iostream>
 #include <queue>
 #include <cmath>
@@ -8,12 +9,14 @@
 using namespace std;
 
 ListArr::ListArr(int size, int tamaño){
+
     this->size = size;
     this->tamaño = tamaño;
-    for (int i = 0; i < size; i++)
-    {
+    for (int i = 0; i < size; i++){
+
         ArrayListArr* nuevoArray = new ArrayListArr(tamaño);
         if(first == nullptr){
+        
             first = nuevoArray;
             end = nuevoArray;
         }else{
@@ -25,7 +28,15 @@ ListArr::ListArr(int size, int tamaño){
 }
 
 ListArr::~ListArr(){
-
+    
+    //Destructor
+    ArrayListArr* aux = end;
+    while (aux != nullptr){
+    
+        ArrayListArr* a = aux;
+        aux = aux->getNext();
+        delete a;
+    }
 }
 
 int ListArr::getSize(){
@@ -34,24 +45,55 @@ int ListArr::getSize(){
 
 void ListArr::insert_left(int v){
 
+    if (count >= capacity){
+        cout << "Error: ListArr is full" << endl;
+        return;
+    }
+    
+    for (int i = count; i > 0; i--) {
+        arr[i] = arr[i-1];
+    }
+    
+    arr[0] = v;
+    count++;
 }
-
 void ListArr::insert_right(int v){
     
 }
 
 void ListArr::insert(int v, int i){
 
+    if (i >= size){
+        
+        newArray();
+    }
+    
+    int pos = 0;
+    ArrayListArr* aux = first;
+    
+    while (i >= tamaño){
+    
+        aux = aux->getNext();
+        i -= tamaño;
+        pos++;
+    }
+    
+    aux->insert(v, i);
+    NodoListArr* auxn = root;
+    
+    int cont = 0;
+    
+    getNodo(pos, auxn, cont);
+    reHacerNodos(size);
 }
-
 void ListArr::print(){
     ArrayListArr* aux;//Se parte desde el primero
     aux==first;
     int contAux=0;
-    while (contAux<=getSize())//Pasará por todos los arrays, hasta que ya no se cumpla esta condición
-    {
-        for (int i = 0; i < aux->getUsado(); i++)
-        {
+    while (contAux<=getSize()){ //Pasará por todos los arrays, hasta que ya no se cumpla esta condición
+        
+        for (int i = 0; i < aux->getUsado(); i++){
+
             cout<<aux->arrayPosicion(i)<<endl;
         }
         aux==aux->getNext();
@@ -64,10 +106,11 @@ bool ListArr::find(int v){
     }
     ArrayListArr* aux=first;//Se parte desde el primero
     int contAux=0;
-    while (contAux<=getSize())//Pasará por todos los arrays, hasta que ya no se cumpla esta condición
-    {
-        for (int i = 0; i < aux->getUsado(); i++)
-        {
+    
+    while (contAux<=getSize()){ //Pasará por todos los arrays, hasta que ya no se cumpla esta condición
+    
+        for (int i = 0; i < aux->getUsado(); i++){
+            
             if(aux->arrayPosicion(i)==v){//Chequea las posiciones
                 return true;
             }
@@ -97,13 +140,18 @@ NodoListArr* ListArr::reHacerNodos(int n){//Se tiene que utilizar para los metod
     //OJO AQUI. cuando se quiera usar este metodo con el getSize(), se debe usar ceil(getSize()) para que redondee al proximo entero, esto es para casos como por ejemplo el 5,
     //si se tienen arrays, se puede saber que se necesitan 3 nodos, pero n/2 da 2.5, entonces al usar ceil da 3 y no 2.5 
     if (n == 0) return NULL;
+    
     int altura = ceil(log2(n + 1));
     int nodos = pow(2, altura) - 1;
+    
     NodoListArr* root = new NodoListArr();
     queue<NodoListArr*> q;
+    
     q.push(root);
     nodos--;
+    
     while (nodos > 0) {
+        
         NodoListArr* nodo = q.front();
         q.pop();
         nodos--;
@@ -135,7 +183,9 @@ void ListArr::vaciarHojas(){
 void ListArr::rellenarVector(NodoListArr* nodo){
 //cuando se llame a esta función, su primer llamado debe ser usando el root.
     if (!nodo) return;
+    
     if (!nodo->getNodoIzquierdo(nodo) && !nodo->getNodoDerecho(nodo)) {
+    
         hojas.push_back(nodo);
         return;
     }
@@ -145,18 +195,19 @@ void ListArr::rellenarVector(NodoListArr* nodo){
 
 void ListArr::rellenarNodos(){
     ArrayListArr* aux = first;
-    for (int i = 0; i < hojas.size(); i++)
-    {
+    for (int i = 0; i < hojas.size(); i++){
+
         int suma=0;
         suma += aux->getUsado();
+        
         if(aux->getNext()!=nullptr){
+        
             aux = aux->getNext();
             suma += aux->getUsado();
             hojas[i]->setEnUso(suma,hojas[i]);
         }else{
+        
             hojas[i]->setEnUso(suma, hojas[i]);
         }
     }
-    
-
 }
