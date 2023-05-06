@@ -36,6 +36,12 @@ int NodoListArr::getCapacidad(){
 	return this->capacidad;
 }
 
+/* retornar array
+ArrayListArr NodoListArr::getArray(){
+	return this->array;
+}
+*/
+
 void NodoListArr::punterosArray() {}
 
 NodoListArr* NodoListArr::getNodoIzquierdo(NodoListArr* nodo){
