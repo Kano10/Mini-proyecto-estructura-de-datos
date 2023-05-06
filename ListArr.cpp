@@ -23,8 +23,11 @@ ListArr::ListArr(int size, int tamaño){
             nuevoArray->setNext(nuevoArray,end);
         }
     }
-    //~NodoListArr();
-    setRoot(); 
+    getRoot()->eliminarNodos(getRoot());
+    setRoot();//al hacer este llamado, se crea el arbol listo con la información en cada nodo
+    //setRoot llama a reHacerNodos, el cual crea el arbol binario completo pero sin info, este luego llama a rellenarHojas, el cual almacena las hojas en un vector,
+    //luego de completar ese metodo, se llama a rellenar nodos, en el que se rellena el arbol completo, usando el vector con la info que tiene, y además hace que las
+    //hojas apunten a los arrays correspondientes.
 }
 
 ListArr::~ListArr(){
@@ -240,13 +243,13 @@ NodoListArr* ListArr::reHacerNodos(int n){//Se tiene que utilizar para los metod
         nodos--;
     }
     vaciarHojas();
-    rellenarVector(root);
+    rellenarHojas(root);
     return root;
 }
 
 
-void ListArr::getRoot(NodoListArr* nodo){
-    nodo = root;
+NodoListArr* ListArr::getRoot(){
+    return root;
 }
 
 void ListArr::setRoot(){
@@ -257,7 +260,7 @@ void ListArr::vaciarHojas(){
     hojas.clear();
 }
 
-void ListArr::rellenarVector(NodoListArr* nodo){
+void ListArr::rellenarHojas(NodoListArr* nodo){
 //cuando se llame a esta función, su primer llamado debe ser usando el root.
     if (!nodo) return;
     
@@ -266,8 +269,8 @@ void ListArr::rellenarVector(NodoListArr* nodo){
         hojas.push_back(nodo);
         return;
     }
-    rellenarVector(nodo->getNodoIzquierdo(nodo));
-    rellenarVector(nodo->getNodoDerecho(nodo));
+    rellenarHojas(nodo->getNodoIzquierdo(nodo));
+    rellenarHojas(nodo->getNodoDerecho(nodo));
 }
 
 void ListArr::rellenarNodos(){
@@ -281,10 +284,25 @@ void ListArr::rellenarNodos(){
         
             aux = aux->getNext();
             suma += aux->getUsado();
-            hojas[i]->setEnUso(suma,hojas[i]);
+            hojas[i]->setEnUso(suma);
         }else{
         
-            hojas[i]->setEnUso(suma, hojas[i]);
+            hojas[i]->setEnUso(suma);
         }
     }
+}
+
+int ListArr::rellenarArbol(NodoListArr* nodo){
+    if(!nodo){
+    return 0;
+    }
+    if(!nodo->getNodoIzquierdo(nodo) && !nodo->getNodoDerecho(nodo)){
+        return nodo->getEnUso();
+    }
+    int izq = rellenarArbol(nodo->getNodoIzquierdo(nodo));
+    int der = rellenarArbol(nodo->getNodoDerecho(nodo));
+    int suma = izq + der;
+    nodo->setEnUso(suma);
+    nodo->setCapacidad();
+    return nodo->getEnUso();
 }

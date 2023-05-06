@@ -47,10 +47,11 @@ public:
 	//además, si se inserta una cantidad de elementos que no cabe en los arrays que tenemos se deben crear más para poder almacenar los valores, este método se deberá usar en esos casos.
 	NodoListArr* reHacerNodos(int n) ;//Cuando se hagan nuevos arrays, es más fácil (o al menos por lo que pienso yo) re hacer todos los nodos resumenes luego de terminar de crear los nuevos arrays y eliminar los nodos resumenes viejos.
 	//dentro de está misma función se podría agregar la eliminación de nodos resumenes, no es necesario crear otro método de eliminación de nodos.
-	void getRoot(NodoListArr* nodo);
+	NodoListArr* getRoot();
 	void setRoot();
 	void vaciarHojas();
-	void rellenarVector(NodoListArr* nodo);
+	void rellenarHojas(NodoListArr* nodo);
 	void rellenarNodos();//Para darle los valores a los nodos resumenes.
+	int rellenarArbol(NodoListArr* nodo);
 };
 #endif

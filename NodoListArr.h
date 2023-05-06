@@ -28,7 +28,8 @@ private:
 public:
 	NodoListArr();
 	~NodoListArr();
-	void setEnUso(int n, NodoListArr* nodo);//Para definir cuantos espacios se están usando
+	void eliminarNodos(NodoListArr* nodo);
+	void setEnUso(int n);//Para definir cuantos espacios se están usando
 	int getEnUso();//Para saber cuantos están en uso
 	void setCapacidad();//Para definir la capacidad total
 	int getCapacidad();//Para saber la capacidad

@@ -7,6 +7,14 @@ NodoListArr::NodoListArr(){
 	this->nodo = nullptr;
 }
 
+void NodoListArr::eliminarNodos(NodoListArr* nodo){
+	if(nodo==nullptr){
+		return;
+	}
+	eliminarNodos(nodo->getNodoIzquierdo(nodo));
+	eliminarNodos(nodo->getNodoDerecho(nodo));
+}
+
 //Destructor
 NodoListArr::~NodoListArr(){
 	
@@ -14,11 +22,8 @@ NodoListArr::~NodoListArr(){
 
 
 //El enUso de cada nodo es la suma del enUso de sus dos hijos
-void NodoListArr::setEnUso(int n, NodoListArr* node){
-	if(getNodoDerecho(node) && getNodoIzquierdo(node) ==nullptr){
-		this->usado = n;
-	}
-	this->usado = nodo->listArrIzq->getUsado() + nodo->listArrDer->getUsado();
+void NodoListArr::setEnUso(int n){
+	usado = n;
 }
 
 //Retorno de usado
