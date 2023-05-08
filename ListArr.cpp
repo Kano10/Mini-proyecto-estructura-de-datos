@@ -158,12 +158,41 @@ bool ListArr::find(int v){
     return false;//si llega a salir del while es porque no está el valor
 }
 
-int ListArr::delete_left(){
+int ListArr::delete_left() {
+    if (first == nullptr) { // lista vacía
+        return -1; // o cualquier valor que quieras retornar en este caso
+    }
 
+    int value = first->arrayPosicion(0); // obtener el valor a eliminar
+    first->insertAt(0, 0); // reemplazar el primer valor con un 0
+
+    if (first->getUsado() == 0) { // si el primer array está vacío
+
+        ArrayListArr* temp = first; // guardar el puntero al primer array
+        first = first->getNext(); // mover el puntero al siguiente array
+        delete temp; // liberar la memoria del primer array vacío
+    }
+    size--; // disminuir el tamaño de la lista
+    return value; // retornar el valor eliminado
 }
 
-int ListArr::delete_right(){
+int ListArr::delete_right() {
+    if (end == nullptr) { // lista vacía
+        return -1; // o cualquier valor que quieras retornar en este caso
+    }
 
+    ArrayListArr* last = end;
+    int value = last->arrayPosicion(last->getUsado() - 1); // obtener el valor a eliminar
+    last->insertAt(0, last->getUsado() - 1); // reemplazar el último valor con un 0
+
+    if (last->getUsado() == 0) { // si el último array está vacío
+
+        ArrayListArr* temp = end; // guardar el puntero al último array
+        end = end->getNext(); // mover el puntero al array anterior
+        delete temp; // liberar la memoria del último array vacío
+    }
+    size--; // disminuir el tamaño de la lista
+    return value; // retornar el valor eliminado
 }
 
 void ListArr::setTamano(int n){//Creo que este se podría quitar, basta con fijar el tamañao en el constructor.
