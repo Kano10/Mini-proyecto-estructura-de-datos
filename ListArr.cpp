@@ -47,22 +47,6 @@ int ListArr::getSize(){
 }
 
 void ListArr::insert_left(int v){
-
-    if (count >= capacity){
-        cout << "Error: ListArr is full" << endl;
-        return;
-    }
-    
-    for (int i = count; i > 0; i--) {
-        arr[i] = arr[i-1];
-    }
-    
-    arr[0] = v;
-    count++;
-}
-
-/*
-void ListArr::insert_left(int v){
     if(!first.ocupado(0)) first.insertAt(v, 0);
     else{
         if(first.getUsado() != first.getTam()){
@@ -79,16 +63,11 @@ void ListArr::insert_left(int v){
             nuevo.insertAt(ultimo, 0);
             nuevo.setNext(first.getNext());
             first.setNext(nuevo);
+            
         }
     }
 }
-*/
 
-void ListArr::insert_right(int v){
-    
-}
-
-/*
 void ListArr::insert_right(int v){
     if(end.getUsado() < end.getTam()) end.insertAt(v, end.getUsado());
     else{
@@ -97,35 +76,7 @@ void ListArr::insert_right(int v){
         end = *nuevo;
     }
 }
-*/
 
-void ListArr::insert(int v, int i){
-
-    if (i >= size){
-        
-        newArray();
-    }
-    
-    int pos = 0;
-    ArrayListArr* aux = first;
-    
-    while (i >= tamaño){
-    
-        aux = aux->getNext();
-        i -= tamaño;
-        pos++;
-    }
-    
-    aux->insert(v, i);
-    NodoListArr* auxn = root;
-    
-    int cont = 0;
-    
-    getNodo(pos, auxn, cont);
-    reHacerNodos(size);
-}
-
-/*
 void ListArr::insert(int v, int i){
     NodoListArr *aux = root;
     //Ir pasando de nodo en nodo hasta llegar al del array correspondiente;
@@ -164,7 +115,6 @@ void ListArr::insert(int v, int i){
         }
     }
 }
-*/
 
 void ListArr::print(){
     ArrayListArr* aux;//Se parte desde el primero
