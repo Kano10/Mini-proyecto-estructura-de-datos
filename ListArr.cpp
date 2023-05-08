@@ -93,7 +93,15 @@ void ListArr::insert(int v, int i){
     }
     //Trabajar en el nodo con el array ya encontrado;
 
-    ArrayListArr *array = aux.getArray();
+    ArrayListArr *array = nullptr;
+    //Determinar en cuál de los arrays de los hijos izquierdo o derecho se encuentra el índice.
+    if (i < aux->getArrayIzq()->getUsado()) {
+        array = aux->getArrayIzq();
+    }
+    else {
+        i -= aux->getArrayIzq()->getUsado();
+        array = aux->getArrayDer();
+    }
     //si la posicion esta disponible insertar
     if(!array.ocupado(i)) array.insertAt(v, i);
     //mover elementos para insertar
@@ -165,6 +173,8 @@ void ListArr::setTamano(int n){//Creo que este se podría quitar, basta con fija
 ArrayListArr ListArr::newArray(){//Se tiene que usar para los metodos insert
     ArrayListArr *nuevo = new ArrayListArr();
     this.size++;
+    getRoot()->eliminarNodos(getRoot());
+    setRoot();
     return nuevo;
 }
 
