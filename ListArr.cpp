@@ -255,7 +255,7 @@ NodoListArr* ListArr::getRoot(){
 }
 
 void ListArr::setRoot(){
-    root = reHacerNodos(ceil(getSize()));
+    root = reHacerNodos(ceil(getSize()/2));
 }
 
 void ListArr::vaciarHojas(){
