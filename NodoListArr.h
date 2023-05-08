@@ -11,8 +11,6 @@ private:
 		ArrayListArr* listArrIzq;//Puntero al array de abajo a la izquierda
 		ArrayListArr* listArrDer;//Puntero al array de abajo a la derecha
 		
-		//ArrayLstArr* array; solo tener un array por nodo
-		
 		
 		Nodo(ArrayListArr* listArrIzq = nullptr, ArrayListArr* listArrDer = nullptr,NodoListArr* nodoIzq = nullptr, NodoListArr* nodoDer = nullptr){
 			this->listArrIzq = listArrIzq;
@@ -36,7 +34,8 @@ public:
 	void punterosArray();//define los punteros a los arrays de abajo
 	NodoListArr* getNodoIzquierdo(NodoListArr * nodo);
 	NodoListArr* getNodoDerecho(NodoListArr* nodo);
-	//ArrayListArr* getArray(); retornar el array cuando se necesite modificar
+	ArrayListArr* getArrayIzq();
+	ArrayListArr* getArrayDer();
 	void setNodoIzquierdo(NodoListArr* nodo);
 	void setNodoDerecho(NodoListArr* nodo);
 	void setArrayIzquierdo(NodoListArr* aux1, ArrayListArr* aux2);
