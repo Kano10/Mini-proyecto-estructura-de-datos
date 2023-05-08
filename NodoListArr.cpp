@@ -41,11 +41,14 @@ int NodoListArr::getCapacidad(){
 	return this->capacidad;
 }
 
-/* retornar array
-ArrayListArr NodoListArr::getArray(){
-	return this->array;
+//retornar arrays
+ArrayListArr NodoListArr::getArrayIzq(){
+	return this->listArrayIzq;
 }
-*/
+
+ArrayListArr NodoListArr::getArrayDer(){
+	return this->listArrayDer;
+}
 
 void NodoListArr::punterosArray() {}
 
