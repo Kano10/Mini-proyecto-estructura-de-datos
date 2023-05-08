@@ -31,7 +31,7 @@ ArrayListArr* ArrayListArr::getNext(){
 	return next;
 }
 
-/*
+
 void ArrayListArr::estaOcupado(int i, bool value){
 	estaOcupado[i] = value;
 }
@@ -39,7 +39,7 @@ void ArrayListArr::estaOcupado(int i, bool value){
 bool ArrayListArr::ocupado(int i){
 	return estaOcupado[i];
 }
-*/
+
 
 
 void ArrayListArr::setNext(ArrayListArr* nuevo, ArrayListArr* end){
@@ -55,8 +55,8 @@ void ArrayListArr::insertAt(int data, int i){
 	if(0 <= i && i < tam){
 		array[i] = data;
 		//cosas que no estaban
-		//estaOcupado[i] = true;
-		//++enUso;
+		estaOcupado[i] = true;
+		++enUso;
 	}
 	//se debe agregar algopara cuando la posición esté ocupada
 	//igual diria que creo más conveniente que este metodo esté en ListArr no mas, ya que por ahi se puede tener acceso a los nodos y a los arrays
