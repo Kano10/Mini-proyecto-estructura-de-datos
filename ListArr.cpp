@@ -231,11 +231,11 @@ void ListArr::rellenarNodos(){
 
         int suma=0;
         suma += aux->getUsado();
-        
         if(aux->getNext()!=nullptr){
-        
+            hojas[i]->setArrayIzquierdo(hojas[i], aux);
             aux = aux->getNext();
             suma += aux->getUsado();
+            hojas[i]->setArrayDerecho(hojas[i],aux);
             hojas[i]->setEnUso(suma);
         }else{
         

@@ -61,3 +61,11 @@ void NodoListArr::setNodoIzquierdo(NodoListArr* nodo){
 void NodoListArr::setNodoDerecho(NodoListArr* nodo){
 	nodo->nodo->nodoDer=new NodoListArr();
 }
+
+void NodoListArr::setArrayIzquierdo(NodoListArr* aux1, ArrayListArr* aux2){
+	aux1->nodo->listArrIzq=aux2;
+}
+
+void NodoListArr::setArrayDerecho(NodoListArr* aux1, ArrayListArr* aux2){
+	aux1->nodo->listArrIzq=aux2;
+}

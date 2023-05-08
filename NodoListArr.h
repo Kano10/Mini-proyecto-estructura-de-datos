@@ -39,6 +39,8 @@ public:
 	//ArrayListArr* getArray(); retornar el array cuando se necesite modificar
 	void setNodoIzquierdo(NodoListArr* nodo);
 	void setNodoDerecho(NodoListArr* nodo);
+	void setArrayIzquierdo(NodoListArr* aux1, ArrayListArr* aux2);
+	void setArrayDerecho(NodoListArr* aux1, ArrayListArr* aux2);
 };
 #endif
 
