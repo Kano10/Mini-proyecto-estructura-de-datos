@@ -75,7 +75,7 @@ void ListArr::insert_left(int v){
             first.insertAt(v, 0);
 
             //crear nuevo nodo de array e insertar ultimo
-            ArrayListArr *nuevo = new ArrayListArr();
+            ArrayListArr *nuevo = newArray();
             nuevo.insertAt(ultimo, 0);
             nuevo.setNext(first.getNext());
             first.setNext(nuevo);
@@ -92,7 +92,7 @@ void ListArr::insert_right(int v){
 void ListArr::insert_right(int v){
     if(end.getUsado() < end.getTam()) end.insertAt(v, end.getUsado());
     else{
-        ArrayListArr *nuevo = new ArrayListArr();
+        ArrayListArr *nuevo = newArray();
         end.setNext(nuevo);
         end = *nuevo;
     }
@@ -142,7 +142,7 @@ void ListArr::insert(int v, int i){
     }
     //Trabajar en el nodo con el array ya encontrado;
 
-    ArrayListArr array = aux.getArray();
+    ArrayListArr *array = aux.getArray();
     //si la posicion esta disponible insertar
     if(!array.ocupado(i)) array.insertAt(v, i);
     //mover elementos para insertar
@@ -157,10 +157,10 @@ void ListArr::insert(int v, int i){
             for(int j = array.getTam() - 1; j > i; --j) array[j] = array[j - 1];
 
             //crear nuevo nodo de array e insertar ultimo
-            ArrayListArr *nuevo = new ArrayListArr();
+            ArrayListArr *nuevo = newArray();
             nuevo.insertAt(ultimo, 0);
-            nuevo.setNext(first.getNext());
-            first.setNext(nuevo);
+            nuevo.setNext(array.getNext());
+            array.setNext(nuevo);
         }
     }
 }
@@ -212,8 +212,10 @@ void ListArr::setTamano(int n){//Creo que este se podría quitar, basta con fija
     tamaño = n;
 }
 
-void ListArr::newArray(){//Se tiene que usar para los metodos insert
-    
+ArrayListArr ListArr::newArray(){//Se tiene que usar para los metodos insert
+    ArrayListArr *nuevo = new ArrayListArr();
+    this.size++;
+    return nuevo;
 }
 
 NodoListArr* ListArr::reHacerNodos(int n){//Se tiene que utilizar para los metodos insert, delete y constructor
