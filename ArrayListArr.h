@@ -6,7 +6,7 @@ private:
 	int enUso;
 	int tam;
 	int* array;
-	//bool* estaOcupado; saber si el espacio esta disponible con true o false.
+	bool* estaOcupado; //saber si el espacio esta disponible con true o false.
 	ArrayListArr* next;
 
 public:
