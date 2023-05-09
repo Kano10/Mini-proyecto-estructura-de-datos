@@ -51,9 +51,6 @@ void ArrayListArr::setOcupado(int i, bool value){
 }
 
 bool ArrayListArr::ocupado(int i){
-	cout<<"FUNCIONA MIERDA"<<endl;
-	cout<<i<<endl;
-	cout<<this->estaOcupado[i]<<endl;
 	return estaOcupado[i];
 }
 

@@ -53,16 +53,12 @@ int NodoListArr::getCapacidad(){
 
 //retornar arrays
 ArrayListArr* NodoListArr::getArrayIzq(){
-	cout<<"flag1 getArrayIzq en NodoListArr.cpp"<<endl;
 	if(nodo->listArrIzq==nullptr){
-		cout<<"flag2 metodo getArrayIzq en NodoListArr.cpp"<<endl;
 	}
-	cout<<"flag3 metodo getArrayIzq en NodoListArr.cpp"<<endl;
 	return this->nodo->listArrIzq;
 }
 
 ArrayListArr* NodoListArr::getArrayDer(){
-	cout<<"flag1 metodo getArrayDer en NodoListArr.cpp"<<endl;
 	return this->nodo->listArrDer;
 }
 
