@@ -26,7 +26,6 @@ ListArr::ListArr(int size, int tamaño){
     ArrayListArr* aux = first;
     for (int i = 0; i < size; ++i)
     {
-        cout<<aux<<endl;
         aux=aux->getNext();
     }
     root = new NodoListArr();
@@ -95,9 +94,6 @@ void ListArr::insert(int v, int i){
                 i -= aux->getNodoIzquierdo()->getEnUso();
                             aux = aux->getNodoDerecho();
             }
-            
-            cout<<aux<<endl;
-            cout<<aux->getArrayDer()<<endl;
         }
     }
     //Trabajar en el nodo con el array ya encontrado;
@@ -105,12 +101,9 @@ void ListArr::insert(int v, int i){
     //Determinar en cuál de los arrays de los hijos izquierdo o derecho se encuentra el índice.
     if (i < aux->getArrayIzq()->getTam()) {
         array = aux->getArrayIzq();
-        cout<<array<<endl;
     }else{
         i -= aux->getArrayIzq()->getUsado();
         array = aux->getArrayDer();
-        cout<<array<<endl;
-        cout<<i<<endl;
 
     }
     //si la posicion esta disponible insertar
@@ -145,7 +138,6 @@ void ListArr::print(ArrayListArr* puntero){
     ArrayListArr* aux=puntero;
     int contAux=0;
     for (int i = 0; i < aux->getUsado(); i++){
-        cout<<i<<endl;
         cout<<aux->arrayPosicion(i)<<endl;
     }
     if(aux->getNext()!=nullptr){
@@ -322,41 +314,3 @@ void ListArr::rellenarArbol(NodoListArr* nodo){
 ArrayListArr* ListArr::getFirst(){
     return first;
 }
-    /*if(!nodo){
-    cout<<"flag1"<<endl;
-    return;
-    }
-    if(!nodo->getNodoIzquierdo() && !nodo->getNodoDerecho()){
-        cout<<"flag2"<<endl;
-        return nodo->getEnUso();
-    }
-    cout<<"flag4"<<endl;
-    if(nodo->getNodoIzquierdo()!=nullptr){
-        rellenarArbol(nodo->getNodoIzquierdo());
-    }
-    if(nodo->getNodoDerecho()!=nullptr){
-        rellenarArbol(nodo->getNodoDerecho());
-        nodo->setCapacidad();
-    }else{
-        nodo->setCapacidad();
-    }
-
-
-        if(!nodo){
-    cout<<"flag1"<<endl;
-    return 0;
-    }
-    if(!nodo->getNodoIzquierdo() && !nodo->getNodoDerecho()){
-        cout<<"flag2"<<endl;
-        return nodo->getEnUso();
-    }
-    cout<<"flag4"<<endl;
-    int izq = rellenarArbol(nodo->getNodoIzquierdo());
-    int der = rellenarArbol(nodo->getNodoDerecho());
-    cout<<"flag3"<<endl;
-    int suma = izq + der;
-    nodo->setEnUso(suma);
-    cout<<"flag6"<<endl;
-    nodo->setCapacidad();
-    cout<<"flag5"<<endl;
-    return nodo->getEnUso();*/
