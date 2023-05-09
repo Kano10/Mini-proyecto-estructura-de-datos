@@ -12,13 +12,13 @@ private:
 	int size;//para saber cuantos arrays hay y así saber cuantos nodos resumen se deben tener
 	int tamaño;//el tamaño que tendrán los arrays, todos tendrán el mismo tamaño al definirse al inicio.
 	NodoListArr* root;
-	vector<NodoListArr*> hojas;//esto se usa para poder saber cuales son las hojas del arbol y así poder asociar
+	std::vector<NodoListArr*> hojas;//esto se usa para poder saber cuales son las hojas del arbol y así poder asociar
 	//los arrays rápidamente.
-
-
-public:
 	ArrayListArr* first;//Apuntará al último ArrayListArr
 	ArrayListArr* end;//apuntará al primer ArrayListArr
+
+public:
+	
 	// Esos debieran ser privados ya que no son metodos.
 	
 	//METODOS QUE NOS PIDEN IMPLEMENTAR
@@ -31,7 +31,7 @@ public:
 	//lo mismo que el método anterior, pero con el puntero al final
 	void insert(int v, int i) ;//insertar valor v en el indice i
 	//para este caso, al insertar un nuevo
-	void print() ;//imprime los valores en pantalla de todo
+	void print(ArrayListArr* puntero) ;//imprime los valores en pantalla de todo
 	//esto se podría hacer simplemente recorriendo los arrays sin usar los nodos resumen
 	bool find(int v) ;//busca el valor v en todo el ListArr
 	int delete_left() ;//eliminar y retornar elemento de la izquierda
@@ -43,7 +43,7 @@ public:
 
 	//METODOS QUE NECESITAMOS PARA PODER IMPLEMENTAR LOS ANTERIORES
 	void setTamano(int n) ;//Para defini el tamaño que será igual para todos los arrays.
-	void newArray() ;//Para crear un nuevo array, usar variable tamaño para crear el array y agregar que size sume 1 cada vez que se llama la funcion.
+	ArrayListArr* newArray() ;//Para crear un nuevo array, usar variable tamaño para crear el array y agregar que size sume 1 cada vez que se llama la funcion.
 	//además, si se inserta una cantidad de elementos que no cabe en los arrays que tenemos se deben crear más para poder almacenar los valores, este método se deberá usar en esos casos.
 	NodoListArr* reHacerNodos(int n) ;//Cuando se hagan nuevos arrays, es más fácil (o al menos por lo que pienso yo) re hacer todos los nodos resumenes luego de terminar de crear los nuevos arrays y eliminar los nodos resumenes viejos.
 	//dentro de está misma función se podría agregar la eliminación de nodos resumenes, no es necesario crear otro método de eliminación de nodos.
@@ -52,6 +52,7 @@ public:
 	void vaciarHojas();
 	void rellenarHojas(NodoListArr* nodo);
 	void rellenarNodos();//Para darle los valores a los nodos resumenes.
-	int rellenarArbol(NodoListArr* nodo);
+	void rellenarArbol(NodoListArr* nodo);
+	ArrayListArr* getFirst();
 };
 #endif

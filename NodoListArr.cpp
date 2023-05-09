@@ -1,18 +1,21 @@
 #include "NodoListArr.h"
+#include <iostream>
+using namespace std;
 
 //Constructor
 NodoListArr::NodoListArr(){
 	this->usado = 0;
-	this->capacidad = 0;
-	this->nodo = nullptr;
+	this->capacidad = capacidad;
+	this->nodo = new Nodo();
+
 }
 
 void NodoListArr::eliminarNodos(NodoListArr* nodo){
 	if(nodo==nullptr){
 		return;
 	}
-	eliminarNodos(nodo->getNodoIzquierdo(nodo));
-	eliminarNodos(nodo->getNodoDerecho(nodo));
+	eliminarNodos(nodo->getNodoIzquierdo());
+	eliminarNodos(nodo->getNodoDerecho());
 }
 
 //Destructor
@@ -33,7 +36,14 @@ int NodoListArr::getEnUso(){
 
 //La capacidad es la suma de los tam maximos de sus hijos 
 void NodoListArr::setCapacidad(){
-	this->capacidad = nodo->listArrIzq->getTam() + nodo->listArrDer->getTam();
+	int aux;
+	if(nodo->listArrIzq != nullptr){
+		aux=nodo->listArrIzq->getTam();
+		if(nodo->listArrDer!=nullptr){
+			aux= aux+ nodo->listArrDer->getTam();
+		}
+	}
+	this->capacidad =aux;
 }
 
 //Retorno de capacidad
@@ -42,24 +52,30 @@ int NodoListArr::getCapacidad(){
 }
 
 //retornar arrays
-ArrayListArr NodoListArr::getArrayIzq(){
-	return this->listArrayIzq;
+ArrayListArr* NodoListArr::getArrayIzq(){
+	cout<<"flag1 getArrayIzq en NodoListArr.cpp"<<endl;
+	if(nodo->listArrIzq==nullptr){
+		cout<<"flag2 metodo getArrayIzq en NodoListArr.cpp"<<endl;
+	}
+	cout<<"flag3 metodo getArrayIzq en NodoListArr.cpp"<<endl;
+	return this->nodo->listArrIzq;
 }
 
-ArrayListArr NodoListArr::getArrayDer(){
-	return this->listArrayDer;
+ArrayListArr* NodoListArr::getArrayDer(){
+	cout<<"flag1 metodo getArrayDer en NodoListArr.cpp"<<endl;
+	return this->nodo->listArrDer;
 }
 
 void NodoListArr::punterosArray() {}
 
-NodoListArr* NodoListArr::getNodoIzquierdo(NodoListArr* nodo){
-	return nodo->nodo->nodoIzq;
+NodoListArr* NodoListArr::getNodoIzquierdo(){
+	return this->nodo->nodoIzq;
 }
-NodoListArr* NodoListArr::getNodoDerecho(NodoListArr* nodo){
-	return nodo->nodo->nodoDer;
+NodoListArr* NodoListArr::getNodoDerecho(){
+	return this->nodo->nodoDer;
 }
-void NodoListArr::setNodoIzquierdo(NodoListArr* nodo){
-	nodo->nodo->nodoIzq=new NodoListArr();
+void NodoListArr::setNodoIzquierdo(NodoListArr* node){
+	node->nodo->nodoIzq=new NodoListArr();
 }
 void NodoListArr::setNodoDerecho(NodoListArr* nodo){
 	nodo->nodo->nodoDer=new NodoListArr();

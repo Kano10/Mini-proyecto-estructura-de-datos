@@ -19,7 +19,7 @@ public:
 	bool ocupado(int i); //preguntar si espacio esta disponible
 	void setOcupado(int i, bool value); //marcar casilla ocupada cuando se inserte
 	
-	void setNext(ArrayListArr* nuevo, ArrayListArr* end);
+	void setNext(ArrayListArr* nuevo);
 	//segun yo setNext solo necesita nuevo y no el end
 	
 	int arrayPosicion(int p);//retorna la posicion p del array

@@ -1,4 +1,6 @@
 #include "ArrayListArr.h"
+#include <iostream>
+using namespace std;
 
 //Constructor para cada elemento
 ArrayListArr::ArrayListArr(int tam){
@@ -6,6 +8,10 @@ ArrayListArr::ArrayListArr(int tam){
 	this->enUso = 0;
 	this->next = nullptr;
 	this->array = new int[tam];
+	this->estaOcupado = new bool[tam];
+	for(int i = 0; i < tam; ++i){
+		estaOcupado[i] = false;
+	}
 }
 
 //Elminarlos
@@ -14,6 +20,7 @@ ArrayListArr::~ArrayListArr(){
 	this->enUso = 0;
 	this->next = nullptr;
 	delete[] array;
+	delete[] estaOcupado;
 }
 
 //Retorno de enUso
@@ -31,30 +38,29 @@ ArrayListArr* ArrayListArr::getNext(){
 	return next;
 }
 
-
-void ArrayListArr::estaOcupado(int i, bool value){
-	estaOcupado[i] = value;
-}
-
-bool ArrayListArr::ocupado(int i){
-	return estaOcupado[i];
-}
-
-
-
-void ArrayListArr::setNext(ArrayListArr* nuevo, ArrayListArr* end){
-		end->next = nuevo;
-		end = nuevo;
+void ArrayListArr::setNext(ArrayListArr* nuevo){
+	this->next = nuevo;
 }
 
 int ArrayListArr::arrayPosicion(int p){
 	return array[p];
 }
+
+void ArrayListArr::setOcupado(int i, bool value){
+	estaOcupado[i] = value;
+}
+
+bool ArrayListArr::ocupado(int i){
+	cout<<"FUNCIONA MIERDA"<<endl;
+	cout<<i<<endl;
+	cout<<this->estaOcupado[i]<<endl;
+	return estaOcupado[i];
+}
+
 //Solo insertar cuando i tiene valor entre 0 y el tam para no acceder a algo que no existe
 void ArrayListArr::insertAt(int data, int i){
 	if(0 <= i && i < tam){
 		array[i] = data;
-		//cosas que no estaban
 		estaOcupado[i] = true;
 		++enUso;
 	}

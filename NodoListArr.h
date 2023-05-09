@@ -12,11 +12,11 @@ private:
 		ArrayListArr* listArrDer;//Puntero al array de abajo a la derecha
 		
 		
-		Nodo(ArrayListArr* listArrIzq = nullptr, ArrayListArr* listArrDer = nullptr,NodoListArr* nodoIzq = nullptr, NodoListArr* nodoDer = nullptr){
-			this->listArrIzq = listArrIzq;
-			this->listArrDer = listArrDer;
-			this->nodoIzq = nodoIzq;
-			this->nodoDer = nodoDer;
+		Nodo(){
+			this->listArrIzq = nullptr;
+			this->listArrDer = nullptr;
+			this->nodoIzq = nullptr;
+			this->nodoDer = nullptr;
 		}
 	};
 	int usado;//cuantos numeros se han usado debajo de ese nodo
@@ -32,14 +32,13 @@ public:
 	void setCapacidad();//Para definir la capacidad total
 	int getCapacidad();//Para saber la capacidad
 	void punterosArray();//define los punteros a los arrays de abajo
-	NodoListArr* getNodoIzquierdo(NodoListArr * nodo);
-	NodoListArr* getNodoDerecho(NodoListArr* nodo);
+	NodoListArr* getNodoIzquierdo();
+	NodoListArr* getNodoDerecho();
 	ArrayListArr* getArrayIzq();
 	ArrayListArr* getArrayDer();
-	void setNodoIzquierdo(NodoListArr* nodo);
+	void setNodoIzquierdo(NodoListArr* node);
 	void setNodoDerecho(NodoListArr* nodo);
 	void setArrayIzquierdo(NodoListArr* aux1, ArrayListArr* aux2);
 	void setArrayDerecho(NodoListArr* aux1, ArrayListArr* aux2);
 };
 #endif
-
