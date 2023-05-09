@@ -9,7 +9,7 @@ using namespace std;
 int main(){
         ListArr* array = new ListArr(10, 5);
     cout<<"LISTARR CREADO"<<endl;
-    for(int i = 0; i < 6; ++i){
+    for(int i = 0; i < 10; ++i){
         cout<<"flag"<<endl;
         array->insert(i+1, i);
     }

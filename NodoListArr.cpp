@@ -82,5 +82,5 @@ void NodoListArr::setArrayIzquierdo(NodoListArr* aux1, ArrayListArr* aux2){
 }
 
 void NodoListArr::setArrayDerecho(NodoListArr* aux1, ArrayListArr* aux2){
-	aux1->nodo->listArrIzq=aux2;
+	aux1->nodo->listArrDer=aux2;
 }

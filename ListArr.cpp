@@ -96,6 +96,7 @@ void ListArr::insert(int v, int i){
             }
         }
     }
+    cout<<aux<<endl;
     //Trabajar en el nodo con el array ya encontrado;
     ArrayListArr *array = new ArrayListArr(tamaño);
     //Determinar en cuál de los arrays de los hijos izquierdo o derecho se encuentra el índice.
@@ -106,6 +107,7 @@ void ListArr::insert(int v, int i){
         array = aux->getArrayDer();
 
     }
+    cout<<array<<endl;
     //si la posicion esta disponible insertar
     if(!array->ocupado(i)){
         array->insertAt(v, i);
@@ -290,6 +292,8 @@ void ListArr::rellenarNodos(){
             hojas[i]->setEnUso(suma1);
             hojas[i]->getArrayIzq();//FLAGS
         }
+        cout<<hojas[i]->getArrayIzq()<<endl;
+        cout<<hojas[i]->getArrayDer()<<endl;
     }
 }
 
